@@ -1,7 +1,7 @@
-ember-template-breadcrumbs
+Ember Template Breadcrumbs
 ==============================================================================
 
-[Short description of the addon.]
+Template based breadcrumbs for Ember.
 
 
 Compatibility
@@ -23,8 +23,38 @@ ember install ember-template-breadcrumbs
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+Ember Template Breadcrumbs is inspired by [ember-page-title](https://github.com/adopted-ember-addons/ember-page-title)
+and works in a similar way.
 
+First you'll need to render your breadcrumbs somewhere:
+
+```handlebars
+{{! templates/application.hbs  }}
+{{bread-crumbs}}
+```
+
+And then define breadcrumbs for each route:
+
+```handlebars
+{{! templates/accounts.hbs  }}
+{{bread-crumb "All accounts" "accounts"}}
+```
+
+```handlebars
+{{! templates/accounts/new.hbs  }}
+{{bread-crumb "New" "accounts.new"}}
+```
+
+If you'd like to display a static text instead of a link, just skip the second argument:
+
+```handlebars
+{{! templates/accounts/new.hbs  }}
+{{bread-crumb "New"}}
+```
+
+### Customization
+
+To customize generated HTML, just extend the `bread-crumbs` component.
 
 Contributing
 ------------------------------------------------------------------------------
