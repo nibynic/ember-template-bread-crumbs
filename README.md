@@ -54,7 +54,32 @@ If you'd like to display a static text instead of a link, just skip the second a
 
 ### Customization
 
-To customize generated HTML, just extend the `bread-crumbs` component.
+You can easily customize your HTML by providing a block to the `bread-crumbs` component:
+
+```handlebars
+<ul>
+  {{#bread-crumbs as |item|}}
+    <li>
+      {{item.component class="my-item"}}
+    </li>
+  {{/bread-crumbs}}
+</ul>
+```
+
+The above will render as:
+
+```html
+<ul>
+  <li>
+    <a class="my-item" href="/accounts">All accounts</a>
+  </li>
+  <li>
+    <span class="my-item">New</span>
+  </li>
+</ul>
+```
+
+For more advanced HTML customization you can always extend the `bread-crumbs` component.
 
 Contributing
 ------------------------------------------------------------------------------

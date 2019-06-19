@@ -25,24 +25,26 @@ module('Unit | Service | bread-crumbs', function(hooks) {
 
     let item = service.register(['Bare text']);
 
-    assert.deepEqual(item.getProperties('text', 'routeName'), {
-      text: 'Bare text',
-      routeName: undefined
+    assert.deepEqual(item.getProperties('params', 'isLink', 'hash'), {
+      params: ['Bare text'],
+      isLink: false,
+      hash:   {}
     });
 
     item = service.register(['Linked text', 'route.name']);
 
-    assert.deepEqual(item.getProperties('text', 'routeName'), {
-      text: 'Linked text',
-      routeName: 'route.name'
+    assert.deepEqual(item.getProperties('params', 'isLink', 'hash'), {
+      params: ['Linked text', 'route.name'],
+      isLink: true,
+      hash:   {}
     });
 
     item = service.register(['Linked text', 'route.name'], { additionalParam: 'value' });
 
-    assert.deepEqual(item.getProperties('text', 'routeName', 'additionalParam'), {
-      text: 'Linked text',
-      routeName: 'route.name',
-      additionalParam: 'value'
+    assert.deepEqual(item.getProperties('params', 'isLink', 'hash'), {
+      params: ['Linked text', 'route.name'],
+      isLink: true,
+      hash:   { additionalParam: 'value' }
     });
   });
 
@@ -53,9 +55,6 @@ module('Unit | Service | bread-crumbs', function(hooks) {
 
     item.set('params', ['Linked text', 'route.name']);
 
-    assert.deepEqual(item.getProperties('text', 'routeName'), {
-      text: 'Linked text',
-      routeName: 'route.name'
-    });
+    assert.ok(item.get('isLink'));
   });
 });

@@ -1,7 +1,6 @@
 import Service from '@ember/service';
 import EmberObject, { computed } from '@ember/object';
 import { A } from '@ember/array';
-import { assign } from '@ember/polyfills';
 
 export default Service.extend({
   items: computed(function() {
@@ -9,7 +8,7 @@ export default Service.extend({
   }),
 
   register(params = [], hash = {}) {
-    let item = Item.create(assign({ params }, hash));
+    let item = Item.create({ params, hash });
     this.get('items').addObject(item);
     return item;
   },
@@ -20,11 +19,12 @@ export default Service.extend({
 });
 
 export const Item = EmberObject.extend({
-  routeName: computed('params.[]', function() {
-    return this.get('params')[1];
+  hash: computed({
+    get() { return this._hash || {}; },
+    set(k, v) { return this._hash = v; }
   }),
 
-  text: computed('params.[]', function () {
-    return this.get('params')[0];
+  isLink: computed('params.length', function() {
+    return this.get('params.length') > 1;
   })
 });
