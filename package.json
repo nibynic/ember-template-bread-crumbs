@@ -5,7 +5,7 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "github:nibynic/ember-template-bread-crumbs",
   "license": "MIT",
   "author": "",
   "directories": {
