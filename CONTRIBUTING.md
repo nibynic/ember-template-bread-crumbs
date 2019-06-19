@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-template-breadcrumbs`
+* `cd ember-template-bread-crumbs`
 * `npm install`
 
 ## Linting

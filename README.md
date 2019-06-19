@@ -16,7 +16,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-template-breadcrumbs
+ember install ember-template-bread-crumbs
 ```
 
 
