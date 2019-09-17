@@ -4,6 +4,7 @@ import { render, settled } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import EmberObject from '@ember/object';
 import { A } from '@ember/array';
+import { run } from '@ember/runloop';
 
 module('Integration | Component | bread-crumbs', function(hooks) {
   setupRenderingTest(hooks);
@@ -16,12 +17,14 @@ module('Integration | Component | bread-crumbs', function(hooks) {
 
     assert.dom(this.element).hasText('');
 
-    items.addObject({
-      params: ['Sample link', 'foo.bar'],
-      isLink: true
-    });
-    items.addObject({
-      params: ['Sample text']
+    run(() => {
+      items.addObject({
+        params: ['Sample link', 'foo.bar'],
+        isLink: true
+      });
+      items.addObject({
+        params: ['Sample text']
+      });
     });
     await settled();
 

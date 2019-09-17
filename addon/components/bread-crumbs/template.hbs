@@ -1,5 +1,5 @@
 {{#each breadCrumbs.items as |item|}}
-  {{#if (has-block)}}
+  {{#if hasBlock}}
 
     {{yield (hash
       component=(component (concat "bread-crumbs/" (if item.isLink "link" "text")) item=item)
