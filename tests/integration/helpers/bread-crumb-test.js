@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import Service from '@ember/service';
+import sinon from 'sinon';
 
 module('Integration | Helper | bread-crumb', function(hooks) {
   setupRenderingTest(hooks);
@@ -45,4 +46,3 @@ module('Integration | Helper | bread-crumb', function(hooks) {
     assert.ok(deregister.calledOnceWith(item));
   });
 });
-;
