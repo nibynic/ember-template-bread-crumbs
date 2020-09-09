@@ -43,15 +43,13 @@ module('Integration | Component | bread-crumbs', function(hooks) {
       <ul>
         <BreadCrumbs as |item|>
           <li>
-            <item.component class="my-item" />
+            <item.component />
           </li>
         </BreadCrumbs>
       </ul>
     `);
 
     assert.dom('ul>li').exists({ count: 2 });
-    assert.dom('a').hasClass('my-item');
-    assert.dom('span').hasClass('my-item');
 
     await render(hbs`
       <BreadCrumbs as |item|>

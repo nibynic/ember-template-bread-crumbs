@@ -1,7 +1,7 @@
-Ember Template Breadcrumbs
+Ember Template Bread Crumbs
 ==============================================================================
 
-Template based breadcrumbs for Ember.
+Template-based breadcrumbs for Ember.
 
 
 Compatibility

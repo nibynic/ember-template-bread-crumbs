@@ -23,8 +23,11 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
+    "ember-angle-bracket-invocation-polyfill": "^2.1.0",
     "ember-cli-babel": "^7.22.1",
-    "ember-cli-htmlbars": "^5.3.1"
+    "ember-cli-htmlbars": "^5.3.1",
+    "ember-decorators-polyfill": "^1.1.5",
+    "ember-native-class-polyfill": "^1.0.6"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",

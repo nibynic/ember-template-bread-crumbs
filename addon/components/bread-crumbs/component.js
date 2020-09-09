@@ -1,9 +1,10 @@
 import Component from '@ember/component';
-import layout from './template';
+import { layout, tagName } from '@ember-decorators/component';
+import template from './template';
 import { inject as service } from '@ember/service';
 
-export default Component.extend({
-  layout,
-  tagName: '',
-  breadCrumbs: service()
-});
+@layout(template)
+@tagName('')
+export default class BreacCrumbsComponent extends Component {
+  @service breadCrumbs;
+}

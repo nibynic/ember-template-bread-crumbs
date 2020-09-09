@@ -1,1 +1,1 @@
-export { default, breadCrumb } from 'ember-template-bread-crumbs/helpers/bread-crumb';
+export { default } from 'ember-template-bread-crumbs/helpers/bread-crumb';
