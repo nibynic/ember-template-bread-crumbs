@@ -1,7 +1,12 @@
 Ember Template Bread Crumbs
 ==============================================================================
 
-Template-based breadcrumbs for Ember.
+[![Build Status](https://travis-ci.org/nibynic/ember-template-bread-crumbs.svg?branch=master)](https://travis-ci.org/nibynic/ember-template-bread-crumbs)
+[![npm version](https://badge.fury.io/js/ember-template-bread-crumbs.svg)](https://badge.fury.io/js/ember-template-bread-crumbs)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-template-bread-crumbs.svg)](https://emberobserver.com/addons/ember-template-bread-crumbs)
+
+
+Template based breadcrumbs for Ember.
 
 
 Compatibility
