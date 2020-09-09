@@ -30,22 +30,22 @@ First you'll need to render your breadcrumbs somewhere:
 
 ```handlebars
 {{! templates/application.hbs  }}
-{{bread-crumbs}}
+<BreadCrumbs />
 ```
 
 And then define breadcrumbs for each route:
 
 ```handlebars
 {{! templates/accounts.hbs  }}
-{{bread-crumb "All accounts" "accounts"}}
+{{bread-crumb "All accounts" route="accounts"}}
 ```
 
 ```handlebars
 {{! templates/accounts/new.hbs  }}
-{{bread-crumb "New" "accounts.new"}}
+{{bread-crumb "New" route="accounts.new"}}
 ```
 
-If you'd like to display a static text instead of a link, just skip the second argument:
+If you'd like to display a static text instead of a link, just skip the route argument:
 
 ```handlebars
 {{! templates/accounts/new.hbs  }}
@@ -54,15 +54,15 @@ If you'd like to display a static text instead of a link, just skip the second a
 
 ### Customization
 
-You can easily customize your HTML by providing a block to the `bread-crumbs` component:
+You can easily customize your HTML by providing a block to the `<BreadCrumbs />` component:
 
 ```handlebars
 <ul>
-  {{#bread-crumbs as |item|}}
+  <BreadCrumbs as |item|>
     <li>
-      {{item.component class="my-item"}}
+      <item.component class="my-item" />
     </li>
-  {{/bread-crumbs}}
+  </BreadCrumbs>
 </ul>
 ```
 
@@ -79,7 +79,7 @@ The above will render as:
 </ul>
 ```
 
-For more advanced HTML customization you can always extend the `bread-crumbs` component.
+For more advanced HTML customization you can always extend the `<BreadCrumbs />` component.
 
 Contributing
 ------------------------------------------------------------------------------

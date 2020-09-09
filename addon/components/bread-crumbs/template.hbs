@@ -1,17 +1,17 @@
-{{#each breadCrumbs.items as |item|}}
-  {{#if hasBlock}}
+{{#each this.breadCrumbs.items as |item|}}
+  {{#if (has-block)}}
 
     {{yield (hash
-      component=(component (concat "bread-crumbs/" (if item.isLink "link" "text")) item=item)
+      component=(component (concat "bread-crumbs/" (if item.route "link" "text")) item=item)
       model=item
     )}}
 
   {{else}}
 
-    {{#if item.isLink}}
-      {{bread-crumbs/link item=item}}
+    {{#if item.route}}
+      <BreadCrumbs::Link @item={{item}} />
     {{else}}
-      {{bread-crumbs/text item=item}}
+      <BreadCrumbs::Text @item={{item}} />
     {{/if}}
 
   {{/if}}

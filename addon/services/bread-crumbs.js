@@ -7,8 +7,7 @@ export default Service.extend({
     return A();
   }),
 
-  register(params = [], hash = {}) {
-    let item = Item.create({ params, hash });
+  register(item) {
     this.get('items').addObject(item);
     return item;
   },
@@ -16,15 +15,4 @@ export default Service.extend({
   deregister(item) {
     this.get('items').removeObject(item);
   }
-});
-
-export const Item = EmberObject.extend({
-  hash: computed({
-    get() { return this._hash || {}; },
-    set(k, v) { return this._hash = v; }
-  }),
-
-  isLink: computed('params.length', function() {
-    return this.get('params.length') > 1;
-  })
 });

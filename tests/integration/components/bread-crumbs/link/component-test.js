@@ -7,11 +7,12 @@ module('Integration | Component | bread-crumbs/link', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    this.set('item', {
-      params: ['My link', 'foo.bar']
-    });
+    this.item = {
+      text: 'My link',
+      route: 'foo.bar'
+    };
 
-    await render(hbs`{{bread-crumbs/link item=item}}`);
+    await render(hbs`<BreadCrumbs::Link @item={{this.item}} />`);
 
     assert.dom('a').hasText('My link');
   });

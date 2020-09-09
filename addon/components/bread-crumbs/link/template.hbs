@@ -1,0 +1,19 @@
+{{#if @item.models}}
+  <LinkTo
+    @route={{@item.route}}
+    @models={{@item.models}}
+    @query={{@item.query}}
+    ...attributes
+  >
+    {{@item.text}}
+  </LinkTo>
+{{else}}
+  <LinkTo
+    @route={{@item.route}}
+    @model={{@item.model}}
+    @query={{@item.query}}
+    ...attributes
+  >
+    {{@item.text}}
+  </LinkTo>
+{{/if}}

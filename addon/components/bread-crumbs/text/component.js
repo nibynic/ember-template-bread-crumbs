@@ -1,13 +1,8 @@
 import Component from '@ember/component';
-import layout from './template';
-import { computed } from '@ember/object';
+import { layout, tagName } from '@ember-decorators/component';
+import template from './template';
 
-export default Component.extend({
-  layout,
-
-  tagName: 'span',
-
-  text: computed('item.params.[]', function() {
-    return (this.get('item.params') || [])[0];
-  })
-});
+@layout(template)
+@tagName('')
+export default class BreadCrumbsTextComponent extends Component {
+}

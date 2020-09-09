@@ -7,11 +7,11 @@ module('Integration | Component | bread-crumbs/text', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
-    this.set('item', {
-      params: ['My text']
-    });
+    this.item = {
+      text: 'My text'
+    }
 
-    await render(hbs`{{bread-crumbs/text item=item}}`);
+    await render(hbs`<BreadCrumbs::Text @item={{this.item}} />`);
 
     assert.dom('span').hasText('My text');
   });

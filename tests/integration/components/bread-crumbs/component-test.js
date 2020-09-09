@@ -13,17 +13,17 @@ module('Integration | Component | bread-crumbs', function(hooks) {
     let items = A();
     this.owner.register('service:bread-crumbs', EmberObject.extend({ items }));
 
-    await render(hbs`{{bread-crumbs}}`);
+    await render(hbs`<BreadCrumbs />`);
 
     assert.dom(this.element).hasText('');
 
     run(() => {
       items.addObject({
-        params: ['Sample link', 'foo.bar'],
-        isLink: true
+        text: 'Sample link',
+        route: 'foo.bar'
       });
       items.addObject({
-        params: ['Sample text']
+        text: 'Sample text'
       });
     });
     await settled();
@@ -34,18 +34,18 @@ module('Integration | Component | bread-crumbs', function(hooks) {
 
   test('it renders with a custom HTML syntax', async function(assert) {
     let items = A([
-      { params: ['Sample link', 'foo.bar'], isLink: true },
-      { params: ['Sample text'] }
+      { text: 'Sample link', route: 'foo.bar' },
+      { text: 'Sample text' }
     ]);
     this.owner.register('service:bread-crumbs', EmberObject.extend({ items }));
 
     await render(hbs`
       <ul>
-        {{#bread-crumbs as |item|}}
+        <BreadCrumbs as |item|>
           <li>
-            {{item.component class="my-item"}}
+            <item.component class="my-item" />
           </li>
-        {{/bread-crumbs}}
+        </BreadCrumbs>
       </ul>
     `);
 
@@ -54,12 +54,12 @@ module('Integration | Component | bread-crumbs', function(hooks) {
     assert.dom('span').hasClass('my-item');
 
     await render(hbs`
-      {{#bread-crumbs as |item|}}
-        model: {{item.model.params}}
-      {{/bread-crumbs}}
+      <BreadCrumbs as |item|>
+        model: {{item.model.text}}
+      </BreadCrumbs>
     `);
 
-    assert.dom(this.element).includesText('model: Sample link,foo.bar');
+    assert.dom(this.element).includesText('model: Sample link');
     assert.dom(this.element).includesText('model: Sample text');
   });
 });
