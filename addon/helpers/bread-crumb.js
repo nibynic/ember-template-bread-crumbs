@@ -10,7 +10,6 @@ export default class BreadCrumbHelper extends Helper {
     if (this.registration) {
       assign(this.registration, data);
     } else {
-      console.log('bre', this.breadCrumbs);
       this.registration = this.breadCrumbs.register(data);
     }
   }
