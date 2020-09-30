@@ -11,8 +11,9 @@ module('Integration | Component | bread-crumbs/text', function(hooks) {
       text: 'My text'
     }
 
-    await render(hbs`<BreadCrumbs::Text @item={{this.item}} />`);
+    await render(hbs`<BreadCrumbs::Text @item={{this.item}} class="my-text" />`);
 
     assert.dom('span').hasText('My text');
+    assert.dom('span').hasClass('my-text');
   });
 });
