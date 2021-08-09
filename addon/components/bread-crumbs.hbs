@@ -2,7 +2,10 @@
   {{#if (has-block)}}
 
     {{yield (hash
-      component=(component (concat "bread-crumbs/" (if item.route "link" "text")) item=item)
+      component=(if item.route
+        (component "bread-crumbs/link" item=item)
+        (component "bread-crumbs/text" item=item)
+      )
       model=item
     )}}
 

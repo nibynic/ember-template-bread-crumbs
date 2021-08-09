@@ -15,7 +15,7 @@ export default class BreadCrumbHelper extends Helper {
     }
   }
 
-  destroy() {
+  willDestroy() {
     this.breadCrumbs.deregister(this.registration);
   }
 }

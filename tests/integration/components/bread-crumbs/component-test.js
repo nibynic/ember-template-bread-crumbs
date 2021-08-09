@@ -2,29 +2,33 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, settled } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import EmberObject from '@ember/object';
 import { A } from '@ember/array';
-import { run } from '@ember/runloop';
+import Service from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 module('Integration | Component | bread-crumbs', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders with a default HTML syntax', async function (assert) {
-    let items = A();
-    this.owner.register('service:bread-crumbs', EmberObject.extend({ items }));
+  class BreadCrumbsStub extends Service {
+    @tracked items = A();
+  }
 
+  hooks.beforeEach(async function () {
+    this.owner.register('service:bread-crumbs', BreadCrumbsStub);
+    this.items = this.owner.lookup('service:bread-crumbs').items;
+  });
+
+  test('it renders with a default HTML syntax', async function (assert) {
     await render(hbs`<BreadCrumbs />`);
 
     assert.dom(this.element).hasText('');
 
-    run(() => {
-      items.addObject({
-        text: 'Sample link',
-        route: 'foo.bar',
-      });
-      items.addObject({
-        text: 'Sample text',
-      });
+    this.items.addObject({
+      text: 'Sample link',
+      route: 'foo.bar',
+    });
+    this.items.addObject({
+      text: 'Sample text',
     });
     await settled();
 
@@ -33,11 +37,10 @@ module('Integration | Component | bread-crumbs', function (hooks) {
   });
 
   test('it renders with a custom HTML syntax', async function (assert) {
-    let items = A([
+    this.items.addObjects([
       { text: 'Sample link', route: 'foo.bar' },
       { text: 'Sample text' },
     ]);
-    this.owner.register('service:bread-crumbs', EmberObject.extend({ items }));
 
     await render(hbs`
       <ul>
