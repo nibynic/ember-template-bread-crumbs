@@ -12,14 +12,14 @@ module.exports = async function () {
           EMBER_OPTIONAL_FEATURES: JSON.stringify({
             'application-template-wrapper': true,
             'default-async-observers': false,
-            'template-only-glimmer-components': false
-          })
+            'template-only-glimmer-components': false,
+          }),
         },
         npm: {
           devDependencies: {
-            'ember-source': '~3.4'
-          }
-        }
+            'ember-source': '~3.4',
+          },
+        },
       },
       {
         name: 'ember-lts-3.16',
@@ -91,4 +91,4 @@ module.exports = async function () {
       },
     ],
   };
-}
+};

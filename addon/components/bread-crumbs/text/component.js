@@ -4,5 +4,4 @@ import template from './template';
 
 @layout(template)
 @tagName('')
-export default class BreadCrumbsTextComponent extends Component {
-}
+export default class BreadCrumbsTextComponent extends Component {}

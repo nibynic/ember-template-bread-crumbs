@@ -1,10 +1,10 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Service | bread-crumbs', function(hooks) {
+module('Unit | Service | bread-crumbs', function (hooks) {
   setupTest(hooks);
 
-  test('it registers and deregisters bread crumbs', function(assert) {
+  test('it registers and deregisters bread crumbs', function (assert) {
     let service = this.owner.lookup('service:bread-crumbs');
 
     let item1 = service.register(['Sample text', 'route.name']);

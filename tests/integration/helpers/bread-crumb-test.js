@@ -5,10 +5,10 @@ import hbs from 'htmlbars-inline-precompile';
 import Service from '@ember/service';
 import sinon from 'sinon';
 
-module('Integration | Helper | bread-crumb', function(hooks) {
+module('Integration | Helper | bread-crumb', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it registers and deregisters in bread-crumbs service', async function(assert) {
+  test('it registers and deregisters in bread-crumbs service', async function (assert) {
     let item = {};
     let register = sinon.stub().returns(item);
     let deregister = sinon.stub();
@@ -20,7 +20,7 @@ module('Integration | Helper | bread-crumb', function(hooks) {
     this.owner.register('service:bread-crumbs', BreadCrumbsStub);
 
     this.set('isActive', true);
-    this.set('text', 'My text')
+    this.set('text', 'My text');
 
     await render(hbs`
       {{#if isActive}}
@@ -28,13 +28,15 @@ module('Integration | Helper | bread-crumb', function(hooks) {
       {{/if}}
     `);
 
-    assert.deepEqual(register.getCall(0).args, [{
-      text: 'My text',
-      route: 'foo.bar',
-      query: {
-        customProperty: 'value'
-      }
-    }]);
+    assert.deepEqual(register.getCall(0).args, [
+      {
+        text: 'My text',
+        route: 'foo.bar',
+        query: {
+          customProperty: 'value',
+        },
+      },
+    ]);
 
     this.set('text', 'Another text');
 

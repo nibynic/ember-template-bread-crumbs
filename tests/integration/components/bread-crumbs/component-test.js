@@ -6,10 +6,10 @@ import EmberObject from '@ember/object';
 import { A } from '@ember/array';
 import { run } from '@ember/runloop';
 
-module('Integration | Component | bread-crumbs', function(hooks) {
+module('Integration | Component | bread-crumbs', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders with a default HTML syntax', async function(assert) {
+  test('it renders with a default HTML syntax', async function (assert) {
     let items = A();
     this.owner.register('service:bread-crumbs', EmberObject.extend({ items }));
 
@@ -20,10 +20,10 @@ module('Integration | Component | bread-crumbs', function(hooks) {
     run(() => {
       items.addObject({
         text: 'Sample link',
-        route: 'foo.bar'
+        route: 'foo.bar',
       });
       items.addObject({
-        text: 'Sample text'
+        text: 'Sample text',
       });
     });
     await settled();
@@ -32,10 +32,10 @@ module('Integration | Component | bread-crumbs', function(hooks) {
     assert.dom('span').hasText('Sample text');
   });
 
-  test('it renders with a custom HTML syntax', async function(assert) {
+  test('it renders with a custom HTML syntax', async function (assert) {
     let items = A([
       { text: 'Sample link', route: 'foo.bar' },
-      { text: 'Sample text' }
+      { text: 'Sample text' },
     ]);
     this.owner.register('service:bread-crumbs', EmberObject.extend({ items }));
 
