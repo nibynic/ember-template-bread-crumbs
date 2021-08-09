@@ -1,8 +1,18 @@
-<LinkTo
-  @route={{@item.route}}
-  @models={{if @item.models @item.models (array @item.model)}}
-  @query={{if @item.query @item.query (hash)}}
-  ...attributes
->
-  {{@item.text}}
-</LinkTo>
+{{#if (or @item.models @item.model)}}
+  <LinkTo
+    @route={{@item.route}}
+    @models={{or @item.models (array @item.model)}}
+    @query={{if @item.query @item.query (hash)}}
+    ...attributes
+  >
+    {{@item.text}}
+  </LinkTo>
+{{else}}
+  <LinkTo
+    @route={{@item.route}}
+    @query={{if @item.query @item.query (hash)}}
+    ...attributes
+  >
+    {{@item.text}}
+  </LinkTo>
+{{/if}}
