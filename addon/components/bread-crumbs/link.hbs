@@ -1,29 +1,8 @@
-{{#if @item.models}}
-  <LinkTo
-    @route={{@item.route}}
-    @models={{@item.models}}
-    @query={{@item.query}}
-    ...attributes
-  >
-    {{@item.text}}
-  </LinkTo>
-{{else}}
-  {{#if @tem.model}}
-    <LinkTo
-      @route={{@item.route}}
-      @model={{@item.model}}
-      @query={{@item.query}}
-      ...attributes
-    >
-      {{@item.text}}
-    </LinkTo>
-  {{else}}
-    <LinkTo
-      @route={{@item.route}}
-      @query={{@item.query}}
-      ...attributes
-    >
-      {{@item.text}}
-    </LinkTo>
-  {{/if}}
-{{/if}}
+<LinkTo
+  @route={{@item.route}}
+  @models={{if @item.models @item.models (array @item.model)}}
+  @query={{if @item.query @item.query (hash)}}
+  ...attributes
+>
+  {{@item.text}}
+</LinkTo>
