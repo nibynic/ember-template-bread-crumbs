@@ -40,8 +40,8 @@ module('Integration | Helper | bread-crumb', function (hooks) {
 
     this.set('text', 'Another text');
 
-    assert.equal(item.text, 'Another text');
-    assert.equal(item.route, 'foo.bar');
+    assert.strictEqual(item.text, 'Another text');
+    assert.strictEqual(item.route, 'foo.bar');
 
     this.set('isActive', false);
 
